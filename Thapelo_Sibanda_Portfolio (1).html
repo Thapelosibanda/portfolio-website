@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101713" />
+  <meta name="description" content="Thapelo Sibanda — Business Intelligence Developer specialising in Power BI, SQL Server, SSRS and data warehousing." />
+  <title>Thapelo Sibanda | Business Intelligence Developer</title>
+  <style>
+    :root {
+      --ink: #101713;
+      --ink-soft: #29342e;
+      --paper: #f2f3ed;
+      --paper-2: #e7eae1;
+      --muted: #68736b;
+      --line: rgba(16, 23, 19, .14);
+      --accent: #c7f36b;
+      --accent-dark: #89ad38;
+      --white: #fbfcf8;
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(18, 28, 21, .10);
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(242, 243, 237, .88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    .brand-mark { width: 31px; height: 31px; display: grid; place-items: center; background: var(--accent); color: var(--ink); border-radius: 9px; font-size: 13px; letter-spacing: -.04em; }
+    .nav-links { display: flex; align-items: center; gap: 27px; color: var(--muted); font-size: 13px; font-weight: 650; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { padding: 11px 16px; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); }
+    .nav-cta:hover { background: var(--ink); color: var(--white); }
+    .menu-toggle { display: none; border: 0; background: transparent; color: var(--ink); padding: 8px; cursor: pointer; }
+    .hero { background: var(--ink); color: var(--white); overflow: hidden; position: relative; }
+    .hero::before, .hero::after { content: ""; position: absolute; pointer-events: none; border: 1px solid rgba(199,243,107,.18); border-radius: 50%; }
+    .hero::before { width: 650px; height: 650px; right: -180px; top: -350px; }
+    .hero::after { width: 470px; height: 470px; right: -90px; top: -260px; }
+    .hero-grid { min-height: 610px; padding-block: 94px 86px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr); align-items: center; gap: 70px; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 25px; height: 1px; background: currentColor; }
+    h1 { margin: 23px 0 22px; max-width: 790px; font-size: clamp(48px, 7.3vw, 90px); line-height: .98; letter-spacing: -.075em; font-weight: 760; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .hero-copy { max-width: 610px; color: #c0c9c1; font-size: 17px; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 19px; border-radius: 999px; font-size: 13px; font-weight: 750; transition: transform .2s ease, background .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: var(--ink); }
+    .btn-secondary { color: var(--white); border: 1px solid rgba(255,255,255,.25); }
+    .hero-side { align-self: end; padding: 26px 0 10px; }
+    .availability { display: flex; align-items: center; gap: 9px; margin-bottom: 48px; color: #c4cdc5; font-size: 12px; }
+    .availability i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(199,243,107,.12); }
+    .hero-stat { border-top: 1px solid rgba(255,255,255,.2); padding-top: 17px; margin-top: 17px; }
+    .hero-stat strong { display: block; color: var(--accent); font-size: 25px; letter-spacing: -.05em; }
+    .hero-stat span { display: block; color: #aeb9b0; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; margin-top: 4px; }
+    .draft-note { display: inline-flex; gap: 8px; align-items: center; color: #d2dccf; border: 1px solid rgba(199,243,107,.3); border-radius: 999px; padding: 8px 12px; font-size: 11px; margin-top: 29px; }
+    .draft-note b { color: var(--accent); font-weight: 800; }
+    section { padding-block: 100px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 42px; }
+    .section-kicker { color: var(--accent-dark); font-size: 11px; text-transform: uppercase; letter-spacing: .17em; font-weight: 850; }
+    h2 { margin: 10px 0 0; font-size: clamp(34px, 5vw, 54px); letter-spacing: -.065em; line-height: 1.04; }
+    .section-intro { max-width: 390px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; }
+    .about-mark { min-height: 330px; background: var(--accent); border-radius: var(--radius); position: relative; overflow: hidden; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; }
+    .about-mark::before { content: ""; position: absolute; width: 330px; height: 330px; border: 1px solid rgba(16,23,19,.18); border-radius: 50%; top: 56px; left: 90px; }
+    .about-mark::after { content: ""; position: absolute; width: 220px; height: 220px; border: 1px solid rgba(16,23,19,.24); border-radius: 50%; top: 110px; left: 145px; }
+    .mark-label { position: relative; z-index: 1; font-size: 11px; letter-spacing: .15em; font-weight: 850; text-transform: uppercase; }
+    .mark-bottom { position: relative; z-index: 1; font-size: 60px; line-height: .9; font-weight: 850; letter-spacing: -.09em; }
+    .about-copy p { color: var(--ink-soft); font-size: 16px; line-height: 1.85; margin: 0 0 18px; }
+    .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 30px; }
+    .principle { padding: 17px 18px; border: 1px solid var(--line); border-radius: 14px; }
+    .principle strong { display: block; font-size: 13px; margin-bottom: 5px; }
+    .principle span { color: var(--muted); font-size: 12px; }
+    .dark-section { background: #e7eae1; }
+    .project-card { background: var(--ink); color: var(--white); border-radius: 26px; padding: 38px; display: grid; grid-template-columns: 1fr .85fr; gap: 50px; overflow: hidden; position: relative; }
+    .project-card::after { content: ""; position: absolute; right: -130px; bottom: -230px; width: 440px; height: 440px; border: 1px solid rgba(199,243,107,.25); border-radius: 50%; box-shadow: 0 0 0 45px rgba(199,243,107,.035), 0 0 0 90px rgba(199,243,107,.025); }
+    .project-info, .project-visual { position: relative; z-index: 1; }
+    .project-type { color: var(--accent); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 850; }
+    h3 { margin: 15px 0 15px; font-size: clamp(27px, 4vw, 39px); line-height: 1.08; letter-spacing: -.055em; }
+    .project-info p { max-width: 510px; color: #bac5bc; font-size: 14px; line-height: 1.8; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
+    .tag { border: 1px solid rgba(255,255,255,.2); color: #d4ddd5; border-radius: 999px; padding: 7px 11px; font-size: 11px; }
+    .project-visual { display: flex; align-items: center; justify-content: center; min-height: 280px; }
+    .layers { width: min(100%, 340px); display: grid; gap: 10px; transform: rotate(-5deg); }
+    .layer { padding: 17px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 800; box-shadow: 0 16px 28px rgba(0,0,0,.18); }
+    .layer small { font-size: 10px; font-weight: 600; opacity: .7; }
+    .layer.bronze { background: #b47a4f; color: #21170f; margin-right: 40px; }
+    .layer.silver { background: #d6ddd5; color: #1a241e; margin-left: 20px; margin-right: 20px; }
+    .layer.gold { background: var(--accent); color: var(--ink); margin-left: 50px; }
+    .project-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+    .project-point { padding: 21px; border: 1px solid var(--line); border-radius: 15px; }
+    .project-point b { display: block; font-size: 13px; margin-bottom: 7px; }
+    .project-point span { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .cap-card { border: 1px solid var(--line); border-radius: 18px; padding: 25px; min-height: 190px; background: rgba(255,255,255,.28); }
+    .cap-num { color: var(--accent-dark); font-size: 11px; font-weight: 850; letter-spacing: .15em; }
+    .cap-card h3 { font-size: 20px; margin: 22px 0 9px; }
+    .cap-card p { color: var(--muted); font-size: 13px; line-height: 1.7; margin: 0; }
+    .timeline { border-top: 1px solid var(--line); }
+    .timeline-row { display: grid; grid-template-columns: .55fr 1fr 1.4fr; gap: 25px; padding: 25px 0; border-bottom: 1px solid var(--line); align-items: start; }
+    .timeline-date { color: var(--muted); font-size: 12px; padding-top: 4px; }
+    .timeline-title { font-size: 15px; font-weight: 800; }
+    .timeline-detail { color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .placeholder { color: #7c876f; font-style: italic; }
+    .contact-section { background: var(--ink); color: var(--white); padding-block: 90px; }
+    .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 60px; align-items: end; }
+    .contact-section .section-kicker { color: var(--accent); }
+    .contact-section h2 { max-width: 650px; }
+    .contact-section p { color: #b9c3bb; max-width: 500px; font-size: 14px; line-height: 1.8; }
+    .contact-panel { border-top: 1px solid rgba(255,255,255,.2); padding-top: 18px; }
+    .contact-line { display: flex; justify-content: space-between; gap: 20px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.16); font-size: 13px; }
+    .contact-line span:first-child { color: #91a097; }
+    .contact-line span:last-child { color: var(--accent); text-align: right; }
+    footer { background: var(--ink); color: #8d9a90; border-top: 1px solid rgba(255,255,255,.12); padding: 22px 0; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    .hero-role { color: #d6dfd7; font-size: 13px; font-weight: 650; letter-spacing: .04em; margin-top: 20px; }
+    .hero-role span { color: var(--accent); }
+    .experience-list { display: grid; gap: 16px; }
+    .experience-card { background: rgba(255,255,255,.34); border: 1px solid var(--line); border-radius: 18px; padding: 25px; }
+    .experience-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 12px; }
+    .experience-company { color: var(--accent-dark); font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: .13em; }
+    .experience-card h3 { margin: 7px 0 0; font-size: 22px; }
+    .experience-date { color: var(--muted); font-size: 12px; white-space: nowrap; padding-top: 5px; }
+    .experience-card ul { padding-left: 19px; margin: 12px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.8; }
+    .experience-card li + li { margin-top: 5px; }
+    .credential-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .credential-card { border: 1px solid var(--line); border-radius: 16px; padding: 21px; background: rgba(255,255,255,.3); min-height: 145px; }
+    .credential-kind { color: var(--accent-dark); font-size: 10px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .credential-card h3 { font-size: 17px; line-height: 1.25; margin: 13px 0 8px; }
+    .credential-card p { color: var(--muted); font-size: 12px; line-height: 1.65; margin: 0; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .skill-tags span { border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; font-size: 11px; color: var(--ink-soft); background: rgba(255,255,255,.3); }
+    .confidentiality { margin-top: 22px; border: 1px solid rgba(137,173,56,.55); border-radius: 15px; padding: 19px 21px; background: #ffffff; color: #35443a; font-size: 13px; line-height: 1.8; box-shadow: 0 8px 24px rgba(16,23,19,.06); }
+    .confidentiality strong { color: #4d6b1f; font-weight: 850; }
+    .reporting-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+    .reporting-card { border: 1px solid rgba(255,255,255,.17); background: rgba(255,255,255,.045); border-radius: 15px; padding: 21px; }
+    .reporting-card b { display: block; margin-bottom: 7px; font-size: 14px; }
+    .reporting-card p { margin: 0; color: #bac5bc; font-size: 12px; line-height: 1.7; }
+    .contact-line a { color: var(--accent); text-align: right; overflow-wrap: anywhere; }
+    .contact-note { color: #95a39a; font-size: 11px; line-height: 1.65; margin-top: 16px; }
+    @media (max-width: 850px) { .reporting-grid { grid-template-columns: 1fr; } .credential-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 650px) { .experience-top { display: block; } .experience-date { white-space: normal; } .credential-grid { grid-template-columns: 1fr; } }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } * { transition-duration: .01ms !important; } }
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; min-height: auto; gap: 30px; padding-block: 78px 60px; }
+      .hero-side { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; padding: 0; }
+      .availability { grid-column: 1/-1; margin: 0 0 10px; }
+      .hero-stat { margin: 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 35px; }
+      .about-mark { min-height: 245px; }
+      .project-card { grid-template-columns: 1fr; gap: 10px; }
+      .project-visual { min-height: 230px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: min(var(--max), calc(100% - 34px)); }
+      .nav { min-height: 66px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; background: var(--paper); padding: 18px 24px 24px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .nav-cta { text-align: center; }
+      .hero-grid { padding-top: 65px; }
+      h1 { font-size: clamp(47px, 14vw, 68px); }
+      .hero-copy { font-size: 15px; }
+      section { padding-block: 72px; }
+      .section-head { display: block; margin-bottom: 30px; }
+      .section-intro { margin-top: 17px; }
+      .principles, .cap-grid, .project-points { grid-template-columns: 1fr; }
+      .project-card { padding: 26px 22px; }
+      .timeline-row { grid-template-columns: 1fr; gap: 8px; }
+      .hero-side { grid-template-columns: 1fr 1fr; }
+      .hero-stat:last-child { grid-column: 1/-1; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Portfolio home"><span class="brand-mark">TS</span><span>Portfolio / BI & Data</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#work">Work</a><a href="#capabilities">Skills</a><a href="#experience">Experience</a><a href="#credentials">Credentials</a><a class="nav-cta" href="#contact">Contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Business intelligence · Reporting · Data</div>
+          <h1>Making data<br>work for <em>business.</em></h1>
+          <p class="hero-copy">I’m Thapelo Sibanda, a Business Intelligence Developer based in Johannesburg. I develop and maintain Power BI and SSRS reporting solutions, work with SQL Server stored procedures and support SSIS data pipelines — translating business requirements into reliable reporting and decision support.</p>
+          <div class="hero-role">Currently: <span>Business Intelligence Developer · Lyra Southern Africa</span></div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+            <a class="btn btn-secondary" href="#contact">Contact me <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="draft-note"><b>PROFESSIONAL PORTFOLIO</b><span>Business Intelligence · Reporting · SQL</span></div>
+        </div>
+        <aside class="hero-side" aria-label="Professional overview">
+          <div class="availability"><i></i><span>Johannesburg · South Africa</span></div>
+          <div class="hero-stat"><strong>Power BI</strong><span>Dashboards · DAX · Modelling</span></div>
+          <div class="hero-stat"><strong>SQL Server</strong><span>Queries · Stored procedures · ETL</span></div>
+          <div class="hero-stat"><strong>SSRS</strong><span>Expressions · Report datasets</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-kicker">01 / About</div><h2>Business context.<br>Technical thinking.</h2></div>
+          <p class="section-intro">A working BI Developer combining Microsoft reporting technologies, SQL Server development, data quality and stakeholder engagement.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-mark reveal"><span class="mark-label">Data with purpose</span><span class="mark-bottom">BI<span style="color:#46611b">.</span></span></div>
+          <div class="about-copy reveal">
+            <p>I am a Business Intelligence Developer with experience developing and supporting reporting solutions using Microsoft Power BI, SQL Server Reporting Services (SSRS), SQL Server and SQL Server Integration Services (SSIS). My work focuses on turning business reporting requirements into dashboards, reports and dependable data processes.</p>
+            <p>In my current role, I work with SQL data and stored procedures, develop Power BI dashboards and DAX measures, build SSRS expressions and report datasets, and support ETL pipelines. I also carry out data validation, document reporting logic and work with stakeholders and analytical teams to clarify requirements.</p>
+            <p>Earlier roles as a Programming Foundation Facilitator and Tutor strengthened my ability to explain technical concepts, support learners and communicate clearly. Alongside my professional reporting work, I have built an independent SQL Server data warehouse project to demonstrate data ingestion, transformation and dimensional modelling.</p>
+            <div class="principles">
+              <div class="principle"><strong>Business-oriented</strong><span>Technology connected to business outcomes</span></div>
+              <div class="principle"><strong>Reporting delivery</strong><span>Power BI and SSRS solutions for business users</span></div>
+              <div class="principle"><strong>Structured data</strong><span>Reliable foundations for analysis and reporting</span></div>
+              <div class="principle"><strong>Technical communication</strong><span>Documentation, facilitation and stakeholder engagement</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-kicker">02 / Selected work</div><h2>Proof through<br>practical work.</h2></div>
+          <p class="section-intro">This section separates an independent, reproducible SQL project from professional reporting work carried out inside an organisation. Internal data and implementation assets remain confidential.</p>
+        </div>
+        <article class="project-card reveal">
+          <div class="project-info">
+            <div class="project-type">Independent portfolio project · SQL Server</div>
+            <h3>End-to-end SQL<br>data warehouse</h3>
+            <p>Designed and built a SQL Server data warehouse using six sample CRM and ERP source files and a Bronze → Silver → Gold architecture. T-SQL stored procedures load the source CSVs into Bronze tables, transform and standardise records in Silver, and expose customer and product dimensions plus a sales fact view in a Gold-layer star schema.</p>
+            <div class="tag-list"><span class="tag">Microsoft SQL Server</span><span class="tag">T-SQL</span><span class="tag">Data warehousing</span><span class="tag">ETL</span><span class="tag">Data quality</span><span class="tag">Star schema</span><span class="tag">Bronze · Silver · Gold</span></div>
+          </div>
+          <div class="project-visual" aria-label="Bronze, Silver, Gold data warehouse layers">
+            <div class="layers">
+              <div class="layer bronze"><span>BRONZE</span><small>Raw source data</small></div>
+              <div class="layer silver"><span>SILVER</span><small>Cleaned & transformed</small></div>
+              <div class="layer gold"><span>GOLD</span><small>Analytics-ready layer</small></div>
+            </div>
+          </div>
+        </article>
+        <div class="project-points reveal">
+          <div class="project-point"><b>01 / Source ingestion</b><span>Loaded six CRM and ERP CSV datasets into Bronze tables with BULK INSERT, table resets and TRY/CATCH error handling.</span></div>
+          <div class="project-point"><b>02 / Data quality & transformation</b><span>Cleaned and standardised values, removed duplicate customer records, validated dates and handled invalid sales and price values.</span></div>
+          <div class="project-point"><b>03 / Analytics model</b><span>Built Gold-layer customer and product dimensions and a sales fact view, joined into a star-schema structure.</span></div>
+        </div>
+        <div class="section-head reveal" style="margin:62px 0 22px;">
+          <div><div class="section-kicker">Professional reporting experience</div><h2 style="font-size:clamp(28px,4vw,40px);">Reporting in a live business environment.</h2></div>
+        </div>
+        <div class="reporting-grid reveal">
+          <article class="reporting-card"><b>Power BI reporting</b><p>Develop and maintain dashboards, build DAX measures, model data and clean report inputs, including column transformations and HTML-tag removal.</p></article>
+          <article class="reporting-card"><b>SSRS reporting</b><p>Work with report datasets, expressions and report visuals to develop and maintain organisational reporting.</p></article>
+          <article class="reporting-card"><b>SQL & ETL support</b><p>Write and maintain stored procedures, query report data and develop or optimise SSIS pipelines that load external data into relational databases.</p></article>
+        </div>
+        <div class="confidentiality reveal"><strong>Confidentiality and responsible disclosure.</strong> Professional reporting solutions described here are used within the organisation. Company datasets, stored procedures, source files, screenshots and business-specific logic are not published. The SQL warehouse above is an independent portfolio project and uses its own sample source files.</div>
+      </div>
+    </section>
+
+    <section id="capabilities">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-kicker">03 / Capabilities</div><h2>Areas of focus.</h2></div>
+          <p class="section-intro">Tools and techniques used in professional reporting work and independent SQL development. This list describes practical exposure; it does not imply expert-level proficiency in every area.</p>
+        </div>
+        <div class="cap-grid reveal">
+          <article class="cap-card"><div class="cap-num">01 / QUERY & DATA</div><h3>SQL Server</h3><p>Inner and LEFT JOINs, common table expressions (CTEs), temporary tables, views and stored procedures. SQL is used to extract reporting data and implement business logic.</p></article>
+          <article class="cap-card"><div class="cap-num">02 / ANALYTICS</div><h3>Power BI</h3><p>Dashboard development, DAX, measures, data modelling and data cleaning, including column-level transformations and removal of HTML tags from text fields.</p></article>
+          <article class="cap-card"><div class="cap-num">03 / REPORTING</div><h3>SSRS</h3><p>Report Builder, report expressions, visuals and report datasets. Develop and maintain paginated reporting for internal business users.</p></article>
+          <article class="cap-card"><div class="cap-num">04 / INTEGRATION</div><h3>SSIS & ETL</h3><p>Develop and optimise ETL pipelines for loading external data into relational databases, with routine monitoring of pipeline health and warehouse integrity.</p></article>
+          <article class="cap-card"><div class="cap-num">05 / QUALITY</div><h3>Data validation</h3><p>Use SQL and Excel to validate data, audit calculations, investigate errors and improve confidence in reporting outputs.</p></article>
+          <article class="cap-card"><div class="cap-num">06 / DELIVERY</div><h3>Stakeholder & support</h3><p>Requirements gathering, technical documentation, cross-functional collaboration, Jira task tracking and incident communication through Teams and Slack.</p></article>
+        </div>
+        <div class="skill-tags reveal" aria-label="Additional tools and capabilities">
+          <span>Microsoft Excel</span><span>Database design</span><span>ERD</span><span>Jira</span><span>Technical documentation</span><span>Problem solving</span><span>Attention to detail</span><span>Communication</span><span>English</span><span>isiZulu</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="dark-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-kicker">04 / Professional experience</div><h2>Building and<br>delivering BI.</h2></div>
+          <p class="section-intro">Experience across business intelligence development, technical education and learner support.</p>
+        </div>
+        <div class="experience-list reveal">
+          <article class="experience-card">
+            <div class="experience-top"><div><div class="experience-company">Lyra Southern Africa</div><h3>Business Intelligence Developer</h3></div><div class="experience-date">September 2024 – Present</div></div>
+            <ul>
+              <li>Design, develop and maintain Power BI and SSRS dashboards, extracting SQL data, writing DAX measures and SSRS expressions, and deploying reports to Power BI Service and the SSRS server.</li>
+              <li>Create, optimise and maintain SQL Server stored procedures that implement business logic and connect back-end data with reporting platforms.</li>
+              <li>Develop and optimise SSIS pipelines to extract and load external data into relational databases; monitor ETL health and data warehouse integrity.</li>
+              <li>Use SQL and Excel for data validation, auditing and resolving calculation issues; collaborate with business stakeholders to gather reporting requirements.</li>
+              <li>Support BI environments, track incidents in Jira, communicate pipeline status through Teams and Slack, and document DAX measures, SSRS expressions and data models.</li>
+            </ul>
+          </article>
+          <article class="experience-card">
+            <div class="experience-top"><div><div class="experience-company">CTU Training Solutions · Roodepoort</div><h3>Programming Foundation Facilitator</h3></div><div class="experience-date">December 2023 – September 2024</div></div>
+            <ul>
+              <li>Planned and facilitated daily learning sessions, preparing presentations and explaining foundational programming concepts, including Python, HTML and CSS, to learners with different levels of experience.</li>
+              <li>Created and updated course content, lesson materials, practical activities and supporting resources to align with course topics and learning outcomes.</li>
+              <li>Designed quizzes and formative assessments, marked learner work and provided feedback to reinforce understanding and identify topics requiring further support.</li>
+              <li>Marked attendance registers, monitored participation and tracked learner progress, working with fellow facilitators to identify learning gaps and refine instructional materials.</li>
+              <li>Prepared students for local assessments and Microsoft international examinations through revision activities, exam-focused practice and additional lessons.</li>
+              <li>Provided student support beyond scheduled sessions, including after-hours assistance, extra lessons and responses to academic queries.</li>
+              <li>Maintained clear, consistent communication with students through email, Microsoft Teams and class WhatsApp groups, sharing learning information and responding to questions.</li>
+            </ul>
+          </article>
+          <article class="experience-card">
+            <div class="experience-top"><div><div class="experience-company">CTU Training Solutions · Roodepoort</div><h3>Programming Foundation Tutor</h3></div><div class="experience-date">August 2023 – November 2023</div></div>
+            <ul>
+              <li>Provided focused learner support with foundational programming and data concepts, helping students understand task requirements and work through problems step by step.</li>
+              <li>Assisted learners with debugging code, identifying syntax and logic issues, testing corrections and improving the structure of their solutions.</li>
+              <li>Explained programming logic and core concepts using guided examples, helping learners connect classroom theory with practical application.</li>
+              <li>Developed interactive, user-focused learning materials and practical exercises to reinforce concepts and give learners opportunities to apply what they had studied.</li>
+              <li>Encouraged structured problem-solving by helping learners break larger tasks into manageable steps and work towards solutions independently.</li>
+              <li>Responded to learner questions and provided practical guidance to strengthen understanding, troubleshoot challenges and build confidence with programming tasks.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><div class="section-kicker">05 / Education & certifications</div><h2>Formal learning.<br>Vendor credentials.</h2></div>
+          <p class="section-intro">CTU Training Solutions qualifications across Systems Development and Database Development, alongside Microsoft Azure data certifications.</p>
+        </div>
+        <div class="credential-grid reveal">
+          <article class="credential-card"><div class="credential-kind">NQF Level 6 · Certificate</div><h3>IT: Database Development</h3><p>CTU Training Solutions<br>February 2023 – November 2023</p></article>
+          <article class="credential-card"><div class="credential-kind">NQF Level 5 · Certificate</div><h3>IT: Systems Development</h3><p>CTU Training Solutions<br>February 2022 – November 2022</p></article>
+          <article class="credential-card"><div class="credential-kind">NQF Level 4 · Certificate</div><h3>IT: Systems Development</h3><p>CTU Training Solutions<br>February 2021 – November 2021</p></article>
+          <article class="credential-card"><div class="credential-kind">Microsoft certification</div><h3>DP-900 · Azure Data Fundamentals</h3><p>Microsoft Azure Data Fundamentals</p></article>
+          <article class="credential-card"><div class="credential-kind">Microsoft certification</div><h3>DP-300 · Administering Azure SQL Solutions</h3><p>Administering Microsoft Azure SQL Solutions</p></article>
+        </div>
+        <div class="skill-tags reveal" aria-label="Languages and professional strengths">
+          <span>English</span><span>isiZulu</span><span>Attention to detail</span><span>Problem solving</span><span>Communication</span><span>Cross-functional collaboration</span><span>Adaptability</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="wrap contact-grid">
+        <div class="reveal">
+          <div class="section-kicker">06 / Contact</div>
+          <h2>Let’s turn reporting needs into useful information.</h2>
+          <p>For Business Intelligence Developer, reporting, SQL and data opportunities, use the contact details below or connect with me through LinkedIn and GitHub.</p>
+          <a class="btn btn-primary" href="mailto:Thapelosibanda19@gmail.com">Email me ↗</a>
+        </div>
+        <div class="contact-panel reveal">
+          <div class="contact-line"><span>Email</span><a href="mailto:Thapelosibanda19@gmail.com">Thapelosibanda19@gmail.com</a></div>
+          <div class="contact-line"><span>Phone</span><a href="tel:0710822299">0710822299</a></div>
+          <div class="contact-line"><span>Location</span><span>Johannesburg, South Africa</span></div>
+          <div class="contact-line"><span>LinkedIn</span><a href="https://www.linkedin.com/in/thapelo-sibanda-46b48a21b/" target="_blank" rel="noopener noreferrer">linkedin.com/in/thapelo-sibanda ↗</a></div>
+          <div class="contact-line"><span>GitHub</span><a href="https://github.com/Thapelosibanda" target="_blank" rel="noopener noreferrer">github.com/Thapelosibanda ↗</a></div>
+          <div class="contact-note">Professional reporting experience is described at a capability level. Company datasets, stored procedures, internal reports and business-specific logic are not published.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner"><span>© <span id="year"></span> Thapelo Sibanda · Business Intelligence Developer</span><span>Johannesburg, South Africa · Power BI · SSRS · SQL Server</span></div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
